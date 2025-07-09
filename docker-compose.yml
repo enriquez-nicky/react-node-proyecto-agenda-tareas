@@ -1,0 +1,12 @@
+
+services:
+  node:
+    image: node:20
+    container_name: react-vite-dev
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    stdin_open: true
+    tty: true
