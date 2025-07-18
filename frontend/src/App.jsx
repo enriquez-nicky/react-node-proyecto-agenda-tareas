@@ -7,7 +7,8 @@ function App() {
   const [showModal,setShowModal] =  useState([]);
 
   useEffect(()=>{    
-    fetch("/tasks.json")
+    //fetch("/tasks.json")
+    fetch("http://localhost:3011/tasks")
     .then((res) => res.json())
     .then((data) => setTasks(data));
   },[]);
@@ -17,12 +18,28 @@ function App() {
       return tareas.filter((task) => task.id !==id);
     });
   }
-  const handleAddTask =(text) => {
+  const  handleAddTask =async (titulo,descripcion,fecha) => {
     const newTask = {
       id : tasks.length > 0  ? tasks[tasks.length - 1].id + 1 : 1,
-      text,
+      titulo,
+      descripcion,
+      fecha
     };
+
     setTasks((tareas)=>[...tareas, newTask]);
+
+    const respuesta = await fetch('http://localhost:3011/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        titulo: newTask.titulo,
+        descripcion: newTask.descripcion,
+        fecha : newTask.fecha
+      }),
+    });
+
     setShowModal(false);
   }
 

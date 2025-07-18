@@ -12,7 +12,9 @@ const TaskList = ({ tasks, onDelete }) => {
           key={task.id}
           className="flex justify-between items-center bg-gray-200 px-4 py-2 rounded shadow-sm"
         >
-          <span>{task.text}</span>
+          <h2>{task.titulo}</h2><br/>
+          <span>{task.descripcion}</span><br/>
+          <span>{task.fecha}</span>
           <button
             onClick={() => onDelete(task.id)}
             className="text-red-600 hover:text-red-800"

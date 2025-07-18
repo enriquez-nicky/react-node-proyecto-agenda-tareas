@@ -1,8 +1,8 @@
 
 services:
-  node:
+  agenda-frontend:
     image: node:20
-    container_name: react-vite-dev
+    container_name: agenda-frontend
     working_dir: /app
     volumes:
       - ./frontend:/app

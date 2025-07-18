@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 
 const TaskForm = ({ onClose, onSave }) => {
-  const [taskText, setTaskText] = useState('');
+  const [taskTitulo, setTaskTitulo] = useState('');
+  const [taskDescripcion, setTaskDescripcion] = useState('');
+  const [taskFecha, setTaskFecha] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!taskText.trim()) return;
-    onSave(taskText);
+    if (!taskTitulo.trim()) return;
+    onSave(taskTitulo,taskDescripcion,taskFecha);
     setTaskText('');
+    setTaskDescripcion('');
+    setTaskFecha('');
   };
 
   return (
@@ -17,9 +21,23 @@ const TaskForm = ({ onClose, onSave }) => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            value={taskText}
-            onChange={(e) => setTaskText(e.target.value)}
-            placeholder="Escribe la tarea..."
+            value={taskTitulo}
+            onChange={(e) => setTaskTitulo(e.target.value)}
+            placeholder="Escribe la titulo de la tarea..."
+            className="w-full p-2 border border-gray-300 rounded mb-4"
+          />
+           <input
+            type="text"
+            value={taskDescripcion}
+            onChange={(e) => setTaskDescripcion(e.target.value)}
+            placeholder="Escribe la descripcion..."
+            className="w-full p-2 border border-gray-300 rounded mb-4"
+          />
+          <input
+            type="text"
+            value={taskFecha}
+            onChange={(e) => setTaskFecha(e.target.value)}
+            placeholder="Escribe la fecha..."
             className="w-full p-2 border border-gray-300 rounded mb-4"
           />
           <div className="flex justify-end gap-2">

@@ -101,5 +101,7 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 backend
 #comandos usados
  npm install -g @nestjs/cli
- 
-  apk add --no-cache mysql-client mysql
+ apt update
+ apt install default-mysql-client -y
+
+npm run start:dev
